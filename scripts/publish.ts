@@ -2,7 +2,7 @@
  * @创建者: yujinjin9@126.com
  * @创建时间: 2023-04-27 15:44:25
  * @最后修改作者: yujinjin9@126.com
- * @最后修改时间: 2023-09-19 14:04:22
+ * @最后修改时间: 2023-09-19 14:17:11
  * @项目的路径: \utils\scripts\publish.ts
  * @描述: 发布脚本
  */
@@ -61,7 +61,7 @@ const publish = async function () {
         // git 推送到远程
         await run("git push");
         // 发布tag到远程
-        await run(`git push origin v${upgradeVersion}'`);
+        await run(`git push origin v${upgradeVersion}`);
         console.success(`发布版本${upgradeVersion}成功`);
     } catch (error) {
         console.error(`发布版本${upgradeVersion}失败`);
