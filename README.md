@@ -300,7 +300,7 @@ feat: 增加其他常用工具类方法-number2text
 
 ```js
 // vt：版本，默认值为：patch（值为：版本号、‘major’、‘minor’、‘patch’，可选）
-npm run build --vt=0.01
+npm run build --vt=1.0.1
 ```
 
 发布命令
