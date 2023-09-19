@@ -2,7 +2,7 @@
  * @创建者: yujinjin9@126.com
  * @创建时间: 2023-04-27 15:44:25
  * @最后修改作者: yujinjin9@126.com
- * @最后修改时间: 2023-09-19 10:57:19
+ * @最后修改时间: 2023-09-19 14:04:22
  * @项目的路径: \utils\scripts\publish.ts
  * @描述: 发布脚本
  */
@@ -42,7 +42,7 @@ const generateChangelog = async function () {
     // 开始生成changelog
     await run("conventional-changelog -p eslint -k packages/package.json -i CHANGELOG.md -s");
     await run("git add .");
-    await run("git commit -m 'chore: 更新 changelog'");
+    await run("git commit -m \"chore: 更新 changelog\"");
     console.success("changelog生成成功，并提交到git");
 };
 
@@ -50,7 +50,6 @@ const generateChangelog = async function () {
 const addGitTag = async function () {
     console.info(`开始生成v${upgradeVersion}版本的tag`);
     await run(`git tag v${upgradeVersion}`);
-    await run(`git push origin v${upgradeVersion}'`);
     console.success(`v${upgradeVersion}版本的tag创建成功，并提交到git`);
 };
 
@@ -59,6 +58,10 @@ const publish = async function () {
     try {
         console.info(`开始发布版本：${upgradeVersion}`);
         await run("npm publish", BUILD_ROOT);
+        // git 推送到远程
+        await run("git push");
+        // 发布tag到远程
+        await run(`git push origin v${upgradeVersion}'`);
         console.success(`发布版本${upgradeVersion}成功`);
     } catch (error) {
         console.error(`发布版本${upgradeVersion}失败`);
