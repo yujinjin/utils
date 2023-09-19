@@ -1,0 +1,45 @@
+{
+    "name": "@yujinjin/utils",
+    "version": "0.0.0-dev",
+    "description": "typescript utils",
+    "keywords": [
+        "utils"
+    ],
+    "homepage": "https://yujinjin.github.io/",
+    "bugs": {
+        "url": "https://github.com/yujinjin/utils/issues"
+    },
+    "license": "MIT",
+    "main": "lib/index.js",
+    "module": "es/index.mjs",
+    "types": "es/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./es/index.d.ts",
+            "import": "./es/index.mjs",
+            "require": "./lib/index.js"
+        },
+        "./es": "./es/index.mjs",
+        "./lib": "./lib/index.js",
+        "./es/*.mjs": "./es/*.mjs",
+        "./es/*": "./es/*.mjs",
+        "./lib/*.js": "./lib/*.js",
+        "./lib/*": "./lib/*.js",
+        "./*": "./*"
+    },
+    "unpkg": "dist/index.full.js",
+    "jsdelivr": "dist/index.full.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yujinjin/utils.git"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "sideEffects": [
+        "dist/*",
+        "es/*",
+        "lib/*"
+    ],
+    "dependencies": {}
+}
