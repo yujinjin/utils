@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "target": "esnext", // 指定ECMAScript目标版本
+        "module": "ESNext", // 指定生成哪个模块系统代码
+        "moduleResolution": "node", // 决定如何处理模块。
+        "isolatedModules": true, // 将每个文件作为单独的模块
+        // 启用所有严格类型检查选项。
+        // 启用 --strict相当于启用 --noImplicitAny, --noImplicitThis, --alwaysStrict，--strictNullChecks和 --strictFunctionTypes和--strictPropertyInitialization。
+        "strict": true,
+        // "noLib": false, // 不包含默认的库文件（ lib.d.ts）
+        "forceConsistentCasingInFileNames": true, // 禁止对同一个文件的不一致的引用。
+        "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。
+        "strictFunctionTypes": false,
+        "jsx": "preserve",
+        // "outDir": "dist",
+        "declaration": true, // 生成相应的 '.d.ts' 文件
+        // "declarationDir": "dist/types", // 生成的 '.d.ts' 文件保存文件夹
+        "baseUrl": ".", // 解析非相对模块名的基准目录
+        "allowJs": true,
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "noUnusedLocals": true, // 有未使用的变量时，抛出错误
+        "noUnusedParameters": false, // 有未使用的参数时，不抛出错误
+        "noImplicitAny": false,
+        "skipLibCheck": true, // 忽略所有的声明文件（ *.d.ts）的类型检查。
+        "removeComments": false, // 是否删除所有注释，除了以 /!*开头的版权信息。
+        "lib": ["ESNext", "DOM"],
+        "types": ["node"] // 需要包含的类型声明文件名列表
+    },
+    // 命令行执行ts-node的时候的配置
+    "ts-node": {
+        "esm": true,
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
+    "exclude": ["node_modules/**/*", "packages/**/*"]
+}

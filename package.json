@@ -1,0 +1,83 @@
+{
+    "name": "utils",
+    "description": "typescript utils",
+    "homepage": "https://yujinjin.github.io/",
+    "bugs": {
+        "email": "yujinjin9@126.com",
+        "url": "https://github.com/yujinjin/utils/issues"
+    },
+    "author": {
+        "name": "jack yu",
+        "email": "yujinjin9@126.com",
+        "url": "https://yujinjin.github.io/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yujinjin/utils.git"
+    },
+    "scripts": {
+        "build": "cross-env vt=$npm_config_vt gulp --require @esbuild-kit/cjs-loader -f scripts/build.ts",
+        "publish": "cross-env vt=$npm_config_vt gulp --require @esbuild-kit/cjs-loader -f ./scripts/publish.ts",
+        "test": "vitest --ui",
+        "test:coverage": "vitest --coverage",
+        "lint": "eslint . --ext .js,.ts --max-warnings 0 --cache",
+        "lint:fix": "pnpm run lint --fix",
+        "prepare": "husky install"
+    },
+    "devDependencies": {
+        "typescript": "^5.1.6",
+        "@commitlint/cli": "^17.4.2",
+        "@commitlint/config-conventional": "^17.4.2",
+        "conventional-changelog-cli": "^4.1.0",
+        "husky": "^8.0.3",
+        "lint-staged": "^13.1.1",
+        "prettier": "^2.8.3",
+        "eslint": "^8.33.0",
+        "eslint-define-config": "^1.15.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-eslint-comments": "^3.2.0",
+        "eslint-plugin-import": "^2.27.5",
+        "@typescript-eslint/eslint-plugin": "^5.40.1",
+        "@typescript-eslint/parser": "^5.40.1",
+        "vitest": "^0.29.7",
+        "@vitest/ui": "^0.29.7",
+        "fast-glob": "^3.3.1",
+        "gulp": "^4.0.2",
+        "rollup": "^3.21.4",
+        "rollup-plugin-dts": "^5.3.1",
+        "rollup-plugin-esbuild": "^5.0.0",
+        "@rollup/plugin-terser": "^0.2.0",
+        "@rollup/plugin-typescript": "^11.1.2",
+        "@rollup/plugin-node-resolve": "^15.1.0",
+        "@rollup/plugin-commonjs": "^25.0.4",
+        "fs-extra": "^11.1.1",
+        "ts-node": "^10.9.1",
+        "chalk": "^5.3.0",
+        "@types/fs-extra": "^11.0.01",
+        "@types/node": "^20.6.0",
+        "@esbuild-kit/cjs-loader": "^2.4.2",
+        "cross-env": "^7.0.3",
+        "tslib": "^2.6.2"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "useTabs": false,
+        "jsxBracketSameLine": false,
+        "printWidth": 200,
+        "trailingComma": "none",
+        "arrowParens": "avoid",
+        "semi": true,
+        "singleQuote": false,
+        "quoteProps": "consistent",
+        "htmlWhitespaceSensitivity": "ignore"
+    },
+    "engines": {
+        "node": ">=16"
+    },
+    "lint-staged": {
+        "src/**/*.{jsx,txs,ts,js,json}": [
+            "git add"
+        ]
+    }
+}
