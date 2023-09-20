@@ -2,6 +2,63 @@
 
 前端常用工具包
 
+## 安装
+
+```js
+npm install --save @yujinjin/utils
+```
+
+## 导入
+
+```js
+import { guid, randomId, stringFormat, ... } from "@yujinjin/utils";
+```
+
+## 项目脚本命令
+
+打包命令
+
+```js
+// vt：版本，默认值为：patch（值为：版本号、‘major’、‘minor’、‘patch’，可选）
+npm run build --vt=1.0.1
+```
+
+发布命令
+
+```js
+// vt：版本，默认值为：patch（版本号、‘major’、‘minor’、‘patch’，可选）
+npm run publish --vt=patch
+```
+
+单元测试 UI
+
+```
+npm run test
+```
+
+单元测试覆盖
+
+```
+npm run test:coverage
+```
+
+eslint
+
+```
+npm run lint
+```
+
+## 代码提交规范
+
+1. 提交类型：["feat", "ui", "fix", "docs", "style", "refactor", "build", "ci", "perf", "chore", "revert", "test"]，且必须使用小写
+2. header 内容的最大长度为 72
+3. subject 内容不能为空，最小长度为 1
+
+```
+// 示例
+feat: 增加其他常用工具类方法-number2text
+```
+
 ## utils 方法说明
 
 ### extend
@@ -281,49 +338,4 @@ const obj = { a: [{ c: 1 }], b: 2 };
 getObjectProperty(obj, "a[0].c", 3); // 返回：1
 
 setObjectProperty(obj, ["a", 0, "f"], 3); // 返回：3
-```
-
-## 代码提交规范
-
-1. 提交类型：["feat", "ui", "fix", "docs", "style", "refactor", "build", "ci", "perf", "chore", "revert", "test"]，且必须使用小写
-2. header 内容的最大长度为 72
-3. subject 内容不能为空，最小长度为 1
-
-```
-// 示例
-feat: 增加其他常用工具类方法-number2text
-```
-
-## 项目脚本命令
-
-打包命令
-
-```js
-// vt：版本，默认值为：patch（值为：版本号、‘major’、‘minor’、‘patch’，可选）
-npm run build --vt=1.0.1
-```
-
-发布命令
-
-```js
-// vt：版本，默认值为：patch（版本号、‘major’、‘minor’、‘patch’，可选）
-npm run publish --vt=patch
-```
-
-单元测试 UI
-
-```
-npm run test
-```
-
-单元测试覆盖
-
-```
-npm run test:coverage
-```
-
-eslint
-
-```
-npm run lint
 ```
