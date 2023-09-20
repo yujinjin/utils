@@ -2,7 +2,7 @@
  * @创建者: yujinjin9@126.com
  * @创建时间: 2023-04-27 15:14:36
  * @最后修改作者: yujinjin9@126.com
- * @最后修改时间: 2023-09-19 10:35:41
+ * @最后修改时间: 2023-09-20 17:47:15
  * @项目的路径: \utils\scripts\build.ts
  * @描述: 构建脚本
  */
@@ -162,7 +162,7 @@ const buildLib = async function (minify: boolean) {
         plugins,
         // 如果你觉得第三方依赖体积很大，也可以用 external 拆出来，让调用方提供对应依赖，此时要配合 globals 一起用
         external: Object.keys(pkg.dependencies),
-        treeshake: false
+        treeshake: true
     });
 
     await Promise.all([

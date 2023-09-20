@@ -2,7 +2,7 @@
  * @创建者: yujinjin9@126.com
  * @创建时间: 2023-03-28 16:08:16
  * @最后修改作者: yujinjin9@126.com
- * @最后修改时间: 2023-09-20 11:54:58
+ * @最后修改时间: 2023-09-20 16:42:08
  * @项目的路径: \utils\src\__tests__\others.test.ts
  * @描述: 其他方法测试用例
  */
@@ -80,62 +80,62 @@ describe("utils others", () => {
             vi.useRealTimers();
         });
 
-        // it("throttle { leading: false, tailing: true }", async () => {
-        //     vi.useFakeTimers();
-        //     const run = vi.fn();
-        //     const execute = throttle(run, 300, { leading: false, trailing: true });
-        //     // 函数执行次数
-        //     let runTimes = 0;
-        //     // 下次执行时间
-        //     let nextTime = 0;
-        //     // 定时器时间
-        //     let time = 0;
-        //     // 测试程序执行次数
-        //     let i = 0;
-        //     // 触发1000次，实际执行
-        //     while (i < 1000) {
-        //         ++i;
-        //         time += parseInt((1000 * Math.random()).toFixed(1), 10);
-        //         if (time > nextTime) {
-        //             ++runTimes;
-        //             nextTime = time + 300;
-        //             //nextTime = (parseInt((time / 300).toString(), 10) + (time % 300 === 0 ? 0 : 1)) * 300;
-        //         }
-        //         setTimeout(execute, time);
-        //     }
-        //     vi.advanceTimersByTime(time + 1000);
-        //     expect(run).toHaveBeenCalledTimes(runTimes);
-        //     vi.useRealTimers();
-        // });
+        it("throttle { leading: false, tailing: true }", async () => {
+            vi.useFakeTimers();
+            const run = vi.fn();
+            const execute = throttle(run, 300, { leading: false, trailing: true });
+            // 函数执行次数
+            let runTimes = 0;
+            // 下次执行时间
+            let nextTime = 0;
+            // 定时器时间
+            let time = 0;
+            // 测试程序执行次数
+            let i = 0;
+            // 触发1000次，实际执行
+            while (i < 1000) {
+                ++i;
+                time += parseInt((1000 * Math.random()).toFixed(1), 10);
+                if (time > nextTime) {
+                    ++runTimes;
+                    nextTime = time + 300;
+                    //nextTime = (parseInt((time / 300).toString(), 10) + (time % 300 === 0 ? 0 : 1)) * 300;
+                }
+                setTimeout(execute, time);
+            }
+            vi.advanceTimersByTime(time + 1000);
+            expect(run).toHaveBeenCalledTimes(runTimes);
+            vi.useRealTimers();
+        });
 
-        // it("throttle { leading: true, tailing: false }", async () => {
-        //     vi.useFakeTimers();
-        //     const run = vi.fn();
-        //     const execute = throttle(run, 300, { leading: true, trailing: false });
-        //     execute();
-        //     // 函数执行次数
-        //     let runTimes = 1;
-        //     // 下次执行时间
-        //     let nextTime = 0;
-        //     // 定时器时间
-        //     let time = 0;
-        //     // 测试程序执行次数
-        //     let i = 0;
-        //     // 触发1000次，实际执行
-        //     while (i < 1000) {
-        //         ++i;
-        //         time += parseInt((1000 * Math.random()).toFixed(1), 10);
-        //         if (time >= nextTime + 300) {
-        //             ++runTimes;
-        //             nextTime = time;
-        //             //nextTime = (parseInt((time / 300).toString(), 10) + (time % 300 === 0 ? 0 : 1)) * 300;
-        //         }
-        //         setTimeout(execute, time);
-        //     }
-        //     vi.advanceTimersByTime(time + 1000);
-        //     expect(run).toHaveBeenCalledTimes(runTimes);
-        //     vi.useRealTimers();
-        // });
+        it("throttle { leading: true, tailing: false }", async () => {
+            vi.useFakeTimers();
+            const run = vi.fn();
+            const execute = throttle(run, 300, { leading: true, trailing: false });
+            execute();
+            // 函数执行次数
+            let runTimes = 1;
+            // 下次执行时间
+            let nextTime = 0;
+            // 定时器时间
+            let time = 0;
+            // 测试程序执行次数
+            let i = 0;
+            // 触发1000次，实际执行
+            while (i < 1000) {
+                ++i;
+                time += parseInt((1000 * Math.random()).toFixed(1), 10);
+                if (time >= nextTime + 300) {
+                    ++runTimes;
+                    nextTime = time;
+                    //nextTime = (parseInt((time / 300).toString(), 10) + (time % 300 === 0 ? 0 : 1)) * 300;
+                }
+                setTimeout(execute, time);
+            }
+            vi.advanceTimersByTime(time + 1000);
+            expect(run).toHaveBeenCalledTimes(runTimes);
+            vi.useRealTimers();
+        });
     });
     /******************************** throttle end *******************************/
 
