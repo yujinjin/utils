@@ -3,7 +3,7 @@
  * @创建时间: 2023-03-28 10:54:11
  * @最后修改作者: yujinjin9@126.com
  * @最后修改时间: 2023-03-28 14:36:09
- * @项目的路径: \CMS-components\packages\utils\__tests__\extend.test.ts
+ * @项目的路径: \utils\__tests__\extend.test.ts
  * @描述: 对象复制测试用例
  */
 import { describe, expect, it } from "vitest";

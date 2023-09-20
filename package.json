@@ -40,8 +40,10 @@
         "eslint-plugin-import": "^2.27.5",
         "@typescript-eslint/eslint-plugin": "^5.40.1",
         "@typescript-eslint/parser": "^5.40.1",
-        "vitest": "^0.29.7",
-        "@vitest/ui": "^0.29.7",
+        "vite": "^4.4.9",
+        "vitest": "^0.34.4",
+        "@vitest/ui": "^0.34.4",
+        "@vitest/coverage-v8": "^0.34.4",
         "fast-glob": "^3.3.1",
         "gulp": "^4.0.2",
         "rollup": "^3.21.4",
@@ -58,7 +60,8 @@
         "@types/node": "^20.6.0",
         "@esbuild-kit/cjs-loader": "^2.4.2",
         "cross-env": "^7.0.3",
-        "tslib": "^2.6.2"
+        "tslib": "^2.6.2",
+        "jsdom": "^22.1.0"
     },
     "prettier": {
         "tabWidth": 4,

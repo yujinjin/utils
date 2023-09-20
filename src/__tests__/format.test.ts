@@ -3,7 +3,7 @@
  * @创建时间: 2023-03-28 14:45:39
  * @最后修改作者: yujinjin9@126.com
  * @最后修改时间: 2023-03-28 15:46:30
- * @项目的路径: \CMS-components\packages\utils\__tests__\format.test.ts
+ * @项目的路径: \utils\__tests__\format.test.ts
  * @描述: 格式化方法测试用例
  */
 import { describe, expect, it, vi } from "vitest";

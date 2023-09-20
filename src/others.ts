@@ -2,7 +2,7 @@
  * @创建者: yujinjin9@126.com
  * @创建时间: 2022-08-09 13:49:25
  * @最后修改作者: yujinjin9@126.com
- * @最后修改时间: 2023-09-18 17:10:07
+ * @最后修改时间: 2023-09-20 11:56:14
  * @项目的路径: \utils\src\others.ts
  * @描述: 站点其他常用工具类方法
  */
@@ -89,7 +89,7 @@ export function debounce(callback, wait) {
 }
 
 /**
- * 数字转中文数码(TODO: 待优化)
+ * 数字转中文金额(TODO: 待优化)
  *
  * @param {Number|String}   num     数字[正整数]
  * @param {String}          type    文本类型，lower|upper，默认upper
@@ -125,7 +125,6 @@ export function number2text(number: string | number, type: "upper" | "lower" = "
     const numbers = String(Number(number).toFixed(2)).split(".");
     const integer = numbers[0].split("");
     const decimal = Number(numbers[1]) === 0 ? [] : numbers[1].split("");
-
     // 四位分级
     const levels = integer.reverse().reduce((pre: Array<string[]>, item, idx) => {
         const level = pre[0] && pre[0].length < 4 ? pre[0] : [];

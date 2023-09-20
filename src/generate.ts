@@ -3,7 +3,7 @@
  * @创建时间: 2022-08-09 13:49:25
  * @最后修改作者: yujinjin9@126.com
  * @最后修改时间: 2023-03-28 10:27:59
- * @项目的路径: \CMS-components\packages\utils\generate.ts
+ * @项目的路径: \utils\generate.ts
  * @描述: 动态生成数据
  */
 

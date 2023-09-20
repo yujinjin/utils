@@ -3,7 +3,7 @@
  * @创建时间: 2023-03-24 15:29:09
  * @最后修改作者: yujinjin9@126.com
  * @最后修改时间: 2023-03-28 10:54:58
- * @项目的路径: \CMS-components\packages\utils\__tests__\validation.test.ts
+ * @项目的路径: \utils\__tests__\validation.test.ts
  * @描述: 验证工具类方法测试用例
  */
 import { describe, expect, it } from "vitest";
