@@ -3,7 +3,7 @@
  * @创建时间: 2023-03-28 10:18:12
  * @最后修改作者: yujinjin9@126.com
  * @最后修改时间: 2023-03-29 18:57:14
- * @项目的路径: \CMS-components\packages\utils\url.ts
+ * @项目的路径: \utils\url.ts
  * @描述: URL常用工具类方法
  */
 

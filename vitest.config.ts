@@ -2,7 +2,7 @@
  * @创建者: yujinjin9@126.com
  * @创建时间: 2023-03-27 09:55:34
  * @最后修改作者: yujinjin9@126.com
- * @最后修改时间: 2023-04-27 14:21:19
+ * @最后修改时间: 2023-09-19 14:51:00
  * @项目的路径: \utils\vitest.config.ts
  * @描述: vitest 配置
  */
@@ -15,6 +15,9 @@ export default defineConfig({
         disabled: true
     },
     test: {
-        clearMocks: true
+        clearMocks: true,
+        coverage: {
+            provider: "v8"
+        }
     }
 });

@@ -2,10 +2,11 @@
  * @创建者: yujinjin9@126.com
  * @创建时间: 2023-03-29 17:33:50
  * @最后修改作者: yujinjin9@126.com
- * @最后修改时间: 2023-03-30 09:48:28
- * @项目的路径: \CMS-components\packages\utils\__tests__\url.test.ts
+ * @最后修改时间: 2023-09-19 14:39:47
+ * @项目的路径: \utils\src\__tests__\url.test.ts
  * @描述: URL测试用例
  */
+// @vitest-environment jsdom
 import { describe, expect, it } from "vitest";
 import { changeUrlParameter, parseUrl } from "../index";
 
