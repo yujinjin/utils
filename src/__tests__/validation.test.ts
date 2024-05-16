@@ -2,12 +2,12 @@
  * @创建者: yujinjin9@126.com
  * @创建时间: 2023-03-24 15:29:09
  * @最后修改作者: yujinjin9@126.com
- * @最后修改时间: 2023-03-28 10:54:58
- * @项目的路径: \utils\__tests__\validation.test.ts
+ * @最后修改时间: 2024-05-16 16:07:02
+ * @项目的路径: \utils\src\__tests__\validation.test.ts
  * @描述: 验证工具类方法测试用例
  */
 import { describe, expect, it } from "vitest";
-import { chinaPhoneNumberValidate, emailValidate, chinaIDCardValidate, validateBankCard, validateName } from "../index";
+import { chinaPhoneNumberValidate, emailValidate, chinaIDCardValidate, validateBankCard, validateName, validateChineseCharacter, validatePassword, validateSocialCreditCode, validateSimpleSocialCreditCode } from "../index";
 
 describe("utils validation", () => {
     /******************************** chinaPhoneNumberValidate start *******************************/
@@ -93,7 +93,7 @@ describe("utils validation", () => {
     });
     /******************************** validateBankCard end *******************************/
 
-    /******************************** validateName end *******************************/
+    /******************************** validateName start *******************************/
     describe("validateName testing", () => {
         it("正确数据：全中文", () => {
             expect(validateName("测试")).toBeTruthy();
@@ -104,21 +104,126 @@ describe("utils validation", () => {
         it("正确数据：全英文", () => {
             expect(validateName("jack yu")).toBeTruthy();
         });
+        it("错误数据：有中文标点符号", () => {
+            expect(validateName("艾格里买？买提")).toBeFalsy();
+        });
+        it("错误数据：有中文标点符号", () => {
+            expect(validateName("艾格里买？买提")).toBeFalsy();
+        });
+        it("错误数据：有日文", () => {
+            expect(validateName("は艾格里·买买提·")).toBeFalsy();
+        });
+        it("错误数据：有最近新增加的汉字", () => {
+            expect(validateName("䳸鿏")).toBeFalsy();
+        });
         it("错误数据：‘.’在最前面", () => {
-            expect(validateBankCard("·艾格里·买买提·")).toBeFalsy();
+            expect(validateName("·艾格里·买买提·")).toBeFalsy();
         });
         it("错误数据：‘.’在最后面", () => {
-            expect(validateBankCard("艾格里·买买提·")).toBeFalsy();
+            expect(validateName("艾格里·买买提·")).toBeFalsy();
         });
         it("错误数据：中文有空格", () => {
-            expect(validateBankCard("测 试")).toBeFalsy();
+            expect(validateName("测 试")).toBeFalsy();
         });
         it("错误数据：中英文混合", () => {
-            expect(validateBankCard("测试jackyu·")).toBeFalsy();
+            expect(validateName("测试jackyu·")).toBeFalsy();
         });
         it("错误数据：只有一个英文字符", () => {
-            expect(validateBankCard("J")).toBeFalsy();
+            expect(validateName("J")).toBeFalsy();
         });
     });
     /******************************** validateName end *******************************/
+
+    /******************************** validateChineseCharacter start *******************************/
+    describe("validateChineseCharacter testing", () => {
+        it("正确数据：全中文", () => {
+            expect(validateChineseCharacter("测试")).toBeTruthy();
+        });
+        it("正确数据：有中文以及新加的汉字", () => {
+            expect(validateChineseCharacter("测试䳸鿏")).toBeTruthy();
+        });
+        it("错误数据：有中文标点符号", () => {
+            expect(validateChineseCharacter("测？试")).toBeFalsy();
+        });
+        it("错误数据：大写的数学符号 X", () => {
+            expect(validateChineseCharacter("测𝒳试")).toBeFalsy();
+        });
+        it("错误数据：中英文混合", () => {
+            expect(validateChineseCharacter("测试jackyu")).toBeFalsy();
+        });
+    });
+    /******************************** validateChineseCharacter end *******************************/
+
+
+    /******************************** validatePassword start *******************************/
+    describe("validatePassword testing", () => {
+        it("正确数据：密码内容长度14位，有数字、小写字母、大写字母、^特殊字符这四种组合", () => {
+            expect(validatePassword("1W2D8^yu123edc")).toBeTruthy();
+        });
+        it("正确数据：密码内容长度12位，有数字、小写字母、大写字母、中文特殊字符这四种组合", () => {
+            expect(validatePassword("WD8yu12测3edc")).toBeTruthy();
+        });
+        it("错误数据：密码内容长度14位，有数字、小写字母、大写字母、*特殊字符这四种组合之外还有一个换行符‘\n’", () => {
+            expect(validatePassword("WD8yu*1\n2f3edc")).toBeFalsy();
+        });
+        it("错误数据：密码内容长度14位，有数字、小写字母、大写字母、*特殊字符这四种组合之外还有空格", () => {
+            expect(validatePassword("WD8yu*1 2f3edc")).toBeFalsy();
+        });
+        it("错误数据：密码内容长度21位，有数字、小写字母、大写字母、中文特殊字符这四种组合", () => {
+            expect(validatePassword("1W2D8^yu12GSWAQO3edc测")).toBeFalsy();
+        });
+        it("错误数据：密码内容长度21位，有数字、小写字母、大写字母、中文特殊字符这四种组合", () => {
+            expect(validatePassword("1W2D8^yu12GSWAQO3edc测")).toBeFalsy();
+        });
+        it("错误数据：密码内容长度12位，只有数字、小写字母、大写字母这三种组合", () => {
+            expect(validatePassword("WD8yu12f3edc")).toBeFalsy();
+        });
+        it("错误数据：密码内容长度10位，只有中文特殊字、小写字母这两种组合", () => {
+            expect(validatePassword("这是个测试jackyu")).toBeFalsy();
+        });
+        it("错误数据：密码内容长度10位，只有数字这一种组合", () => {
+            expect(validatePassword("0123456789")).toBeFalsy();
+        });
+    });
+    /******************************** validatePassword end *******************************/
+
+    /******************************** validateSocialCreditCode start *******************************/
+    describe("validateSocialCreditCode testing", () => {
+        it("正确数据：91350100M000100Y43", () => {
+            expect(validateSocialCreditCode("91350100M000100Y43")).toBeTruthy();
+        });
+        it("错误数据：最后一位的校验码错误", () => {
+            expect(validateSocialCreditCode("91350100M000100Y41")).toBeFalsy();
+        });
+        it("错误数据：统一社会信用代码含I、O、S、V、Z字符", () => {
+            expect(validateSocialCreditCode("9I350100M000100Y41")).toBeFalsy();
+        });
+        it("错误数据：统一社会信用代码中第3位~第8位不是数字", () => {
+            expect(validateSocialCreditCode("91A50100M000100Y43")).toBeFalsy();
+        });
+        it("错误数据：统一社会信用代码不是18位", () => {
+            expect(validateSocialCreditCode("91350100M000100Y434")).toBeFalsy();
+        });
+    });
+    /******************************** validateSocialCreditCode end *******************************/
+
+    /******************************** validateSimpleSocialCreditCode start *******************************/
+    describe("validateSimpleSocialCreditCode testing", () => {
+        it("正确数据：15位-91350100M000100", () => {
+            expect(validateSimpleSocialCreditCode("91350100M000100")).toBeTruthy();
+        });
+        it("正确数据：18位-91350100M000100Y43", () => {
+            expect(validateSimpleSocialCreditCode("91350100M000100Y43")).toBeTruthy();
+        });
+        it("正确数据：20位-91350100M000100Y43IO", () => {
+            expect(validateSimpleSocialCreditCode("91350100M000100Y43IO")).toBeTruthy();
+        });
+        it("错误数据：16位-91350100M000100Y", () => {
+            expect(validateSimpleSocialCreditCode("91350100M000100Y")).toBeFalsy();
+        });
+        it("错误数据：除数字和大写字母外的字符-特殊字符", () => {
+            expect(validateSimpleSocialCreditCode("91A50100M000100*43")).toBeFalsy();
+        });
+    });
+    /******************************** validateSimpleSocialCreditCode end *******************************/
 });
