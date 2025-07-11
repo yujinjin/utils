@@ -12,10 +12,10 @@
     "license": "MIT",
     "main": "lib/index.js",
     "module": "es/index.mjs",
-    "types": "es/index.d.ts",
+    "types": "types/index.d.ts",
     "exports": {
         ".": {
-            "types": "./es/index.d.ts",
+            "types": "./types/index.d.ts",
             "import": "./es/index.mjs",
             "require": "./lib/index.js"
         },

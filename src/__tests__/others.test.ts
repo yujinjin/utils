@@ -2,19 +2,19 @@
  * @创建者: yujinjin9@126.com
  * @创建时间: 2023-03-28 16:08:16
  * @最后修改作者: yujinjin9@126.com
- * @最后修改时间: 2023-09-20 16:42:08
+ * @最后修改时间: 2024-05-20 09:48:45
  * @项目的路径: \utils\src\__tests__\others.test.ts
  * @描述: 其他方法测试用例
  */
 // @vitest-environment jsdom
 
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import { loadScript, throttle, debounce, number2text, setObjectProperty, getObjectProperty } from "../index";
 
 describe("utils others", () => {
     /******************************** loadScript start *******************************/
     describe("loadScript testing", () => {
-        it("loadScript", async () => {
+        test("loadScript", async () => {
             vi.useFakeTimers();
             const loaded = loadScript("https://www.baidu.com/", "baidu");
             vi.advanceTimersByTime(10000);
@@ -27,7 +27,7 @@ describe("utils others", () => {
 
     /******************************** throttle start *******************************/
     describe("throttle testing", () => {
-        it("throttle { leading: true, trailing: true }", async () => {
+        test("throttle { leading: true, trailing: true }", async () => {
             vi.useFakeTimers();
             const run = vi.fn();
             const execute = throttle(run, 300);
@@ -80,7 +80,7 @@ describe("utils others", () => {
             vi.useRealTimers();
         });
 
-        it("throttle { leading: false, tailing: true }", async () => {
+        test("throttle { leading: false, tailing: true }", async () => {
             vi.useFakeTimers();
             const run = vi.fn();
             const execute = throttle(run, 300, { leading: false, trailing: true });
@@ -108,7 +108,7 @@ describe("utils others", () => {
             vi.useRealTimers();
         });
 
-        it("throttle { leading: true, tailing: false }", async () => {
+        test("throttle { leading: true, tailing: false }", async () => {
             vi.useFakeTimers();
             const run = vi.fn();
             const execute = throttle(run, 300, { leading: true, trailing: false });
@@ -141,7 +141,7 @@ describe("utils others", () => {
 
     /******************************** debounce start *******************************/
     describe("debounce testing", () => {
-        it("debounce", async () => {
+        test("debounce", async () => {
             vi.useFakeTimers();
             const run = vi.fn();
             const execute = debounce(run, 300);
@@ -172,19 +172,19 @@ describe("utils others", () => {
 
     /******************************** number2text start *******************************/
     describe("number2text testing", () => {
-        it("数字转大写中文货币金额测试1", () => {
+        test("数字转大写中文货币金额测试1", () => {
             expect(number2text(100000000)).toBe("壹亿元整");
         });
 
-        it("数字转大写中文货币金额测试2", () => {
+        test("数字转大写中文货币金额测试2", () => {
             expect(number2text("1234234211.12")).toBe("壹拾贰亿叁仟肆佰贰拾叁万肆仟贰佰壹拾壹元壹角贰分");
         });
 
-        it("数字转小写中文货币金额测试1", () => {
+        test("数字转小写中文货币金额测试1", () => {
             expect(number2text(100000000, "lower")).toBe("一亿元整");
         });
 
-        it("数字转小写中文货币金额测试2", () => {
+        test("数字转小写中文货币金额测试2", () => {
             expect(number2text("3546786543.12", "lower")).toBe("三十五亿四千六百七十八万六千五百四十三元一角二分");
         });
     });
@@ -192,25 +192,25 @@ describe("utils others", () => {
 
     /******************************** setObjectProperty start *******************************/
     describe("setObjectProperty testing", () => {
-        it("setObjectProperty 对象测试", async () => {
+        test("setObjectProperty 对象测试", async () => {
             const target = { a: { b: { c: 12 } } };
             setObjectProperty(target, "a.b.c", 11);
             expect(target).toHaveProperty("a.b.c", 11);
         });
 
-        it("setObjectProperty path数组测试", async () => {
+        test("setObjectProperty path数组测试", async () => {
             const target = { a: { b: { c: 12 } } };
             setObjectProperty(target, ["a", "b", "c"], 11);
             expect(target).toHaveProperty("a.b.c", 11);
         });
 
-        it("setObjectProperty 空对象测试", async () => {
+        test("setObjectProperty 空对象测试", async () => {
             const target = {};
             setObjectProperty(target, "a.b.c", true);
             expect(target).toHaveProperty("a.b.c", true);
         });
 
-        it("setObjectProperty 数组测试", async () => {
+        test("setObjectProperty 数组测试", async () => {
             const target = [];
             setObjectProperty(target, "1.a.c", 10);
             expect(target).toHaveProperty("1.a.c", 10);
@@ -221,19 +221,19 @@ describe("utils others", () => {
     /******************************** getObjectProperty start *******************************/
     describe("getObjectProperty testing", () => {
         const target = { a: { b: { c: 12, d: [{ e: 10 }] } } };
-        it("getObjectProperty 对象测试", async () => {
+        test("getObjectProperty 对象测试", async () => {
             expect(getObjectProperty(target, "a.b.c")).toBe(12);
         });
 
-        it("getObjectProperty path数组测试", async () => {
+        test("getObjectProperty path数组测试", async () => {
             expect(getObjectProperty(target, ["a", "b", "c", "d"], 10)).toBe(10);
         });
 
-        it("getObjectProperty 空对象测试", async () => {
+        test("getObjectProperty 空对象测试", async () => {
             expect(getObjectProperty(target, "a.d.e")).toBeUndefined();
         });
 
-        it("getObjectProperty 数组测试", async () => {
+        test("getObjectProperty 数组测试", async () => {
             expect(getObjectProperty(target, "a.b.d.0.e")).toBe(10);
         });
     });
