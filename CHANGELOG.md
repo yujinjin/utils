@@ -1,3 +1,12 @@
+## [0.0.4](https://github.com/yujinjin/utils/compare/v0.0.3...v0.0.4) (2025-07-11)
+
+
+### feat
+
+* 1.单元测试方法修改 ([d1ef3a6](https://github.com/yujinjin/utils/commit/d1ef3a61a4deaa8f73f6dddee698e72ec61d94d5))
+
+
+
 ## [0.0.3](https://github.com/yujinjin/utils/compare/v0.0.2...v0.0.3) (2024-05-16)
 
 
