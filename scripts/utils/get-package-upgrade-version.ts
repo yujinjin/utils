@@ -8,7 +8,7 @@
  */
 import { exec } from "./process";
 
-export default function (packageName) {
+export default function (packageName: string) {
     console.info("获取最新包-" + packageName + "的版本号");
     // 当前项目线上最新版本号
     let latestVersion = "0.0.0";

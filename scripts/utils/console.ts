@@ -9,19 +9,19 @@
 import chalk from "chalk";
 
 export default {
-    info: function (message, ...args) {
+    info: function (message: string, ...args: any[]) {
         console.info(`\n${chalk.bgBlueBright.black(" INFO ")} ${chalk.blueBright(message)}`, ...args);
     },
-    success: function (message, ...args) {
+    success: function (message: string, ...args: any[]) {
         console.info(`\n${chalk.bgGreenBright.black(" SUCCESS ")} ${chalk.greenBright(message)}`, ...args);
     },
-    error: function (message, ...args) {
+    error: function (message: string, ...args: any[]) {
         console.error(`\n${chalk.bgHex("#FF0006").black(" ERROR ")} ${chalk.hex("#FF0006")(message)}`, ...args);
     },
-    warn: function (message, ...args) {
+    warn: function (message: string, ...args: any[]) {
         console.warn(`\n${chalk.bgHex("#BBBB23").black(" WARN ")} ${chalk.hex("#BBBB23")(message)}`, ...args);
     },
-    debug: function (message, ...args) {
+    debug: function (message: string, ...args: any[]) {
         console.debug(`\n${chalk.bgHex("#0D8F61").black(" DEBUG ")} ${chalk.hex("#0D8F61")(message)}`, ...args);
     }
 };

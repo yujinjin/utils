@@ -25,7 +25,7 @@ export const run = function (command: string, cwd: string = PROJECT_ROOT) {
             app.kill("SIGHUP");
         };
 
-        let stdoutData = null;
+        let stdoutData: Buffer | null = null;
 
         app.stdout?.on("data", data => {
             console.info(`stdout: ${data}`);
