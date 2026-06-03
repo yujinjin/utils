@@ -55,6 +55,12 @@ const generateChangelog = async function () {
 // 根据TAG 生成版本号
 const addGitTag = async function () {
     console.info(`开始生成v${upgradeVersion}版本的tag`);
+    // 若 tag 已存在则先删除，避免重复创建报错
+    const existingTag = exec(`git tag -l v${upgradeVersion}`);
+    if (existingTag && existingTag.trim() === `v${upgradeVersion}`) {
+        await run(`git tag -d v${upgradeVersion}`);
+        console.info(`已删除旧的v${upgradeVersion}版本的tag`);
+    }
     await run(`git tag v${upgradeVersion}`);
     console.success(`v${upgradeVersion}版本的tag创建成功，并提交到git`);
 };
