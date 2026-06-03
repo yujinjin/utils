@@ -41,9 +41,15 @@ const generateChangelog = async function () {
     console.info(`开始生成v${upgradeVersion}版本的changelog`);
     // 开始生成changelog
     await run("conventional-changelog -p eslint -k packages/package.json -i CHANGELOG.md -s");
-    await run("git add .");
-    await run("git commit -m \"chore: 更新 changelog\"");
-    console.success("changelog生成成功，并提交到git");
+    // 检查是否有变更，有变更才提交
+    const statusAfterChangelog: any = exec("git status -s");
+    if (statusAfterChangelog && statusAfterChangelog.length) {
+        await run("git add .");
+        await run("git commit -m \"chore: 更新 changelog\"");
+        console.success("changelog生成成功，并提交到git");
+    } else {
+        console.info("changelog无变更，跳过提交");
+    }
 };
 
 // 根据TAG 生成版本号
