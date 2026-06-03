@@ -1,3 +1,24 @@
+## [0.0.5](https://github.com/yujinjin/utils/compare/v0.0.4...v0.0.5) (2026-06-03)
+
+
+### build
+
+* 调整ts配置和依赖包排序 ([802fe3d](https://github.com/yujinjin/utils/commit/802fe3d5eb6e41d8751f108fdba2da39a99c2d26))
+
+### docs
+
+* 重写并完善项目README文档 ([d4cf766](https://github.com/yujinjin/utils/commit/d4cf76677a54d1784f518820fece613cb258ccab))
+
+### refactor
+
+* 重构工具库代码并完善文档 ([28cd64e](https://github.com/yujinjin/utils/commit/28cd64eade220f6eb948f8929a3e1449adaf6191))
+
+### test
+
+* 完善所有工具方法的单元测试用例 ([e83dcbc](https://github.com/yujinjin/utils/commit/e83dcbc5ae11a52155b37308621fbf48904efafd))
+
+
+
 ## [0.0.4](https://github.com/yujinjin/utils/compare/v0.0.3...v0.0.4) (2025-07-11)
 
 
