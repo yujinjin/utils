@@ -22,7 +22,7 @@
         "resolveJsonModule": true,
         "noUnusedLocals": true, // 有未使用的变量时，抛出错误
         "noUnusedParameters": false, // 有未使用的参数时，不抛出错误
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "skipLibCheck": true, // 忽略所有的声明文件（ *.d.ts）的类型检查。
         "removeComments": false, // 是否删除所有注释，除了以 /!*开头的版权信息。
         "lib": ["ESNext", "DOM"],
@@ -35,5 +35,5 @@
             "module": "CommonJS"
         }
     },
-    "exclude": ["node_modules/**/*", "packages/**/*"]
+    "exclude": ["node_modules/**/*", "packages/**/*", "*.js"]
 }
