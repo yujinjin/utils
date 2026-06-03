@@ -76,6 +76,9 @@
         "quoteProps": "consistent",
         "htmlWhitespaceSensitivity": "ignore"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "engines": {
         "node": ">=16"
     },
